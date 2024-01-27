@@ -113,7 +113,7 @@ public class RobotArmView extends JFrame {
         jPanel8.setBackground(new Color(51, 204, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("");
+        jTextField1.setText("ROBOTICA ITSE UNIVERSIDAD DE IXTLAHUACA CUI");
 
         GroupLayout jPanel8Layout = new GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);

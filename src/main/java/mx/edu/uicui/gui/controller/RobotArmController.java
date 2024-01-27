@@ -1,5 +1,6 @@
 package mx.edu.uicui.gui.controller;
 
+import mx.edu.uicui.gui.bussines.ArmArduinoBusiness;
 import mx.edu.uicui.gui.bussines.RobotArmBusiness;
 import mx.edu.uicui.gui.model.RobotArmModel;
 import mx.edu.uicui.gui.view.RobotArmView;
@@ -33,9 +34,9 @@ public class RobotArmController {
         this.armRobotView.addJButtonConectarActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(armModel.isIsConected()){
+                if (armModel.isIsConected()) {
                     disconnect();
-                }else {
+                } else {
                     connect();
                 }
 
@@ -55,7 +56,7 @@ public class RobotArmController {
     private void getPorts() {
         this.armModel.setPuertos(this.robotArmBusiness.getPorts());
         armRobotView.setPuertos(armModel.getPuertos());
-        if(this.armModel.getPuertos() != null) {
+        if (this.armModel.getPuertos() != null) {
             this.armModel.setHasPort(true);
             this.armRobotView.updateView();
         }
@@ -64,7 +65,8 @@ public class RobotArmController {
     private void sendData() {
         armModel.setWord(armRobotView.getWord());
         System.out.println(armModel.getWord());
-        this.robotArmBusiness.sendData(armModel.getWord());
+        //this.robotArmBusiness.sendData(armModel.getWord());
+        this.robotArmBusiness.sendData();
 
     }
 

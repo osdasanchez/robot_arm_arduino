@@ -1,5 +1,7 @@
 package mx.edu.uicui.app;
 
+import mx.edu.uicui.gui.bussines.ArduinoControl;
+import mx.edu.uicui.gui.bussines.ArmArduinoBusiness;
 import mx.edu.uicui.gui.bussines.LetterBusiness;
 import mx.edu.uicui.gui.bussines.RobotArmBusiness;
 import mx.edu.uicui.gui.controller.RobotArmController;
@@ -24,8 +26,8 @@ public class RobotArmApp {
     private void start() {
         this.armModel = new RobotArmModel();
         this.robotArmView = new RobotArmView(armModel);
-        this.serial4JArduino = new Serial4JArduino();
         this.letterBusiness = new LetterBusiness();
+        this.serial4JArduino = new Serial4JArduino();
         this.robotArmBusiness = new RobotArmBusiness(serial4JArduino, letterBusiness);
         new RobotArmController(armModel, robotArmView, robotArmBusiness);
         robotArmView.setVisible(true);

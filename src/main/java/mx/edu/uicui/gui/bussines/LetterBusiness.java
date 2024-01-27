@@ -58,49 +58,56 @@ public class LetterBusiness {
     public List<AngleModel> calculateAngles(char letter, double xAbsolut, double yAbsolut) {
         List<AngleModel> angleModels = new ArrayList<>();
         List<CoordinateModel> coordinateModels = null;
+        CoordinateModel coordinate1 ;
+        CoordinateModel coordinate2 ;
+        CoordinateModel coordinate3;
+        CoordinateModel coordinate4 ;
+        CoordinateModel coordinate5 ;
+        CoordinateModel coordinate6 ;
+        CoordinateModel coordinate7 ;
+        CoordinateModel coordinate8;
+        CoordinateModel coordinate9;
 
         switch (letter) {
             case 'A':
                 System.out.println("A");
                 coordinateModels = new ArrayList<>();
-
-                CoordinateModel coordinate1 = new CoordinateModel();
+                coordinate1 = new CoordinateModel();
                 coordinate1.setX(0);
                 coordinate1.setY(-2);
                 coordinate1.setZ(8);
 
-                CoordinateModel coordinate2 = new CoordinateModel();
+                coordinate2 = new CoordinateModel();
                 coordinate2.setX(1);
                 coordinate2.setY(0);
                 coordinate2.setZ(8);
 
-                CoordinateModel coordinate3 = new CoordinateModel();
+                coordinate3 = new CoordinateModel();
                 coordinate3.setX(2);
                 coordinate3.setY(-2);
                 coordinate3.setZ(8);
 
-                CoordinateModel coordinate4 = new CoordinateModel();
+                coordinate4 = new CoordinateModel();
                 coordinate4.setX(2);
                 coordinate4.setY(-2);
                 coordinate4.setZ(10);
 
-                CoordinateModel coordinate5 = new CoordinateModel();
+                coordinate5 = new CoordinateModel();
                 coordinate5.setX(0.5);
                 coordinate5.setY(-1);
                 coordinate5.setZ(8);
 
-                CoordinateModel coordinate6 = new CoordinateModel();
+                coordinate6 = new CoordinateModel();
                 coordinate6.setX(1.5);
                 coordinate6.setY(-1);
                 coordinate6.setZ(8);
 
-                CoordinateModel coordinate7 = new CoordinateModel();
+              coordinate7 = new CoordinateModel();
                 coordinate7.setX(1.5);
                 coordinate7.setY(-1);
                 coordinate7.setZ(10);
 
-                CoordinateModel coordinate8 = new CoordinateModel();
-                CoordinateModel coordinate9 = new CoordinateModel();
+
 
                 coordinateModels.add(coordinate1);
                 coordinateModels.add(coordinate2);
@@ -1101,11 +1108,11 @@ public class LetterBusiness {
             System.out.println("yReal: " + yReal);
             double z = coordinateModel.getZ();
 
-            AngleModel angleModel = calculateInverseKinematics(xReal, yReal);
+            AngleModel angleModel = calculateInverseKinematics2(xReal, yReal);
             if(z == 8){
                 angleModel.setThetha3(90);
             } else if (z == 10){
-                angleModel.setThetha3(110);
+                angleModel.setThetha3(90);
             }
             System.out.println("theta3: " + angleModel.getThetha3());
             angleModels.add(angleModel);
@@ -1135,19 +1142,20 @@ public class LetterBusiness {
         return angleModel;
     }
 
-    private AngleModel calculateInverseKinematics2(double x, double y) {
+    public AngleModel calculateInverseKinematics2(double x, double y) {
 
-        double L1 = 21;
-        double L2 = 16.5;
+        double L1 = 20;
+        double L2 = 16;
 
         AngleModel angleModel = new AngleModel();
 
-        double theta2 = Math.atan(Math.sqrt(1- Math.pow((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2),2)        ) / ((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2)));
-        double theta1 = Math.atan(y / x) - Math.atan((L2 * Math.sin(theta2)) / (L1 + L2 * Math.cos(theta2)));
+       double theta2 = Math.acos((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2));
+
+       double theta1 = Math.atan2(y,x) - Math.atan2((L2 * Math.sin(theta2)) , (L1 + L2 * Math.cos(theta2)));
 
 
-        angleModel.setThetha1((theta1  * 180 / Math.PI ) * -1);
-        angleModel.setThetha2((theta2 * 180 / Math.PI )* -1 );
+        angleModel.setThetha1((theta1  * 180 / Math.PI ));
+        angleModel.setThetha2((theta2 * 180 / Math.PI ));
 
         System.out.println("theta1: " + angleModel.getThetha1());
         System.out.println("theta2: " + angleModel.getThetha2());

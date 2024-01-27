@@ -71,65 +71,132 @@ public class Arm extends JArduino {
         // System.out.println("Servo 1: " + outputServo1);
         // analogWrite(analogOutPin3, (byte) outputServo1);
         // delay(1000);
+    /*    analogWrite(analogOutPin3, (byte) 90);
+        analogWrite(analogOutPin5, (byte) 90);
+        analogWrite(analogOutPin6, (byte) 90);*/
 
         //outputServo2 = i;
 
 
-        if (isWritingEnable) {
-            for (AngleModel angleModel : angleModels) {
+  /*      delay(1000);
+        analogWrite(analogOutPin3, (byte) 94);
+        analogWrite(analogOutPin5, (byte) 80);
+        analogWrite(analogOutPin6, (byte) 128);
+        delay(1000);
+        analogWrite(analogOutPin3, (byte) 84);
+        analogWrite(analogOutPin5, (byte) 80);
+        analogWrite(analogOutPin6, (byte) 123);
+        delay(1000);
+        analogWrite(analogOutPin3, (byte) 87);
+        analogWrite(analogOutPin5, (byte) 80);
+        analogWrite(analogOutPin6, (byte) 135);
+        delay(1000);*/
 
-                isWritingEnable = true;
-                servo1EndAngle = (int) angleModel.getThetha1();
-                servo2EndAngle = (int) angleModel.getThetha3();
-                servo3EndAngle = (int) angleModel.getThetha2();
-
-                System.out.println("Servo 1: " + servo1EndAngle);
-                System.out.println("Servo 2: " + servo2EndAngle);
-                System.out.println("Servo 3: " + servo3EndAngle);
+        //delay(1000);
+        analogWrite(analogOutPin3, (byte) servo1EndAngle);
+        analogWrite(analogOutPin5, (byte) servo2EndAngle);
+        analogWrite(analogOutPin6, (byte) servo3EndAngle);
+        delay(1000);
 
 
-                if (isMovingForward(servo1StartAngle, servo1EndAngle)) {
-                    System.out.println("Servo 1: moving forward ");
-                    //servo1StartAngle = servo1EndAngle;
-                } else if (isMovingBackward(servo1StartAngle, servo1EndAngle)) {
-                    System.out.println("Servo 1: moving backward ");
-                    //servo1StartAngle = servo1EndAngle;
-                }
+    }
 
-                if (isMovingForward(servo2StartAngle, servo2EndAngle)) {
-                    System.out.println("Servo 2: moving forward ");
-                    //servo2StartAngle = servo2EndAngle;
-                } else if (isMovingBackward(servo2StartAngle, servo2EndAngle)) {
-                    System.out.println("Servo 2: moving backward ");
-                    //servo2StartAngle = servo2EndAngle;
-                }
+    public void sendAnalogData(int pin, int value) {
+        //this.servo3Angle = value;
 
-                if (isMovingForward(servo3StartAngle, servo3EndAngle)) {
-                    System.out.println("Servo 3: moving forward ");
-                    //servo3StartAngle = servo3EndAngle;
+    /*    for (int i = 90; i <= value; i++) {
+            this.servo1Angle = i;
+        }*/
 
-                } else if (isMovingBackward(servo3StartAngle, servo3EndAngle)) {
-                    System.out.println("Servo 3: moving backward ");
-                    //servo3StartAngle = servo3EndAngle;
+    }
 
-                }
-                analogWrite(analogOutPin3, (byte) servo1EndAngle);
-                analogWrite(analogOutPin5, (byte) servo2EndAngle);
-                analogWrite(analogOutPin6, (byte) servo3EndAngle);
-                analogWrite(analogOutPin9, (byte) servo4EndAngle);
-                delay(1000);
+    public void sendAnalogData(List<AngleModel> angleModels) {
+        this.angleModels = angleModels;
+        isWritingEnable = true;
 
+    }
+
+    public void sendAnalogData(int Angle1, int Angle2, int Angle3) {
+        System.out.println("Angle 1: " + Angle1);
+        System.out.println("Angle 2: " + Angle2);
+        System.out.println("Angle 3: " + Angle3);
+
+        this.servo1EndAngle = Angle1;
+        this.servo2EndAngle = Angle3;
+        this.servo3EndAngle = Angle2;
+        this.servo4EndAngle = 85;
+       // isWritingEnable = true;
+
+    }
+
+    public void sendAnalogData(List<ServoModel> servoModels, boolean isMovingLinear) {
+        for (ServoModel servoModel : servoModels) {
+            System.out.println("Servo: " + servoModel.getAnalogOutPin() + " Angle: " + servoModel.getAngleDegrees());
+            switch (servoModel.getAnalogOutPin()) {
+                case PIN_3: // servomotor 1
+                    servo1EndAngle = servoModel.getAngleDegrees();
+                    if (isMovingForward(servo1StartAngle, servo1EndAngle)) {
+                        servo1MovingForward = true;
+                        System.out.println("Servo 1: moving forward ");
+                    } else if (isMovingBackward(servo1StartAngle, servo1EndAngle)) {
+                        servo1MovingBackward = true;
+                        System.out.println("Servo 1: moving backward ");
+                    }
+
+                    break;
+                case PIN_5: // servomotor 2
+                    servo2EndAngle = servoModel.getAngleDegrees();
+                    if (isMovingForward(servo2StartAngle, servo2EndAngle)) {
+                        servo2MovingForward = true;
+                    } else if (isMovingBackward(servo2StartAngle, servo2EndAngle)) {
+                        servo2MovingBackward = true;
+                    }
+
+                    break;
+                case PIN_6: // servomotor 3
+                    servo3EndAngle = servoModel.getAngleDegrees();
+                    if (isMovingForward(servo3StartAngle, servo3EndAngle)) {
+                        servo3MovingForward = true;
+                    } else if (isMovingBackward(servo3StartAngle, servo3EndAngle)) {
+                        servo3MovingBackward = true;
+                    }
+
+                    break;
+                case PIN_9: // servomotor 4
+                    servo4EndAngle = servoModel.getAngleDegrees();
+                    if (isMovingForward(servo4startAngle, servo4EndAngle)) {
+                        servo4MovingForward = true;
+                    } else if (isMovingBackward(servo4startAngle, servo4EndAngle)) {
+                        servo4MovingBackward = true;
+                    }
+
+                    break;
             }
-            //isWritingEnable = false;
-
-        } else {
-            analogWrite(analogOutPin3, (byte) servo1StartAngle);
-            analogWrite(analogOutPin5, (byte) servo2StartAngle);
-            analogWrite(analogOutPin6, (byte) servo3StartAngle);
-            analogWrite(analogOutPin9, (byte) servo4startAngle);
         }
+    }
 
 
+    private boolean isMovingForward(int startAngle, int endAngle) {
+        boolean movingForward = false;
+        if (endAngle >= 0 && endAngle <= 180) {
+            if (startAngle < endAngle) {
+                movingForward = true;
+            }
+        }
+        return movingForward;
+    }
+
+    private boolean isMovingBackward(int startAngle, int endAngle) {
+        boolean movingBackward = false;
+        if (endAngle >= 0 && endAngle <= 180) {
+            if (startAngle > endAngle) {
+                movingBackward = true;
+            }
+        }
+        return movingBackward;
+    }
+
+    private void moving() throws InvalidPinTypeException {
 
         if (servo1MovingForward) {
             for (int i = servo1StartAngle; i <= servo1EndAngle; i++) {
@@ -226,88 +293,6 @@ public class Arm extends JArduino {
         }
 
 
-    }
-
-    public void sendAnalogData(int pin, int value) {
-        //this.servo3Angle = value;
-
-    /*    for (int i = 90; i <= value; i++) {
-            this.servo1Angle = i;
-        }*/
-
-    }
-
-    public void sendAnalogData(List<AngleModel> angleModels) {
-        this.angleModels = angleModels;
-        isWritingEnable = true;
-
-    }
-
-    public void sendAnalogData(List<ServoModel> servoModels, boolean isMovingLinear) {
-        for (ServoModel servoModel : servoModels) {
-            System.out.println("Servo: " + servoModel.getAnalogOutPin() + " Angle: " + servoModel.getAngleDegrees());
-            switch (servoModel.getAnalogOutPin()) {
-                case PIN_3: // servomotor 1
-                    servo1EndAngle = servoModel.getAngleDegrees();
-                    if (isMovingForward(servo1StartAngle, servo1EndAngle)) {
-                        servo1MovingForward = true;
-                        System.out.println("Servo 1: moving forward ");
-                    } else if (isMovingBackward(servo1StartAngle, servo1EndAngle)) {
-                        servo1MovingBackward = true;
-                        System.out.println("Servo 1: moving backward ");
-                    }
-
-                    break;
-                case PIN_5: // servomotor 2
-                    servo2EndAngle = servoModel.getAngleDegrees();
-                    if (isMovingForward(servo2StartAngle, servo2EndAngle)) {
-                        servo2MovingForward = true;
-                    } else if (isMovingBackward(servo2StartAngle, servo2EndAngle)) {
-                        servo2MovingBackward = true;
-                    }
-
-                    break;
-                case PIN_6: // servomotor 3
-                    servo3EndAngle = servoModel.getAngleDegrees();
-                    if (isMovingForward(servo3StartAngle, servo3EndAngle)) {
-                        servo3MovingForward = true;
-                    } else if (isMovingBackward(servo3StartAngle, servo3EndAngle)) {
-                        servo3MovingBackward = true;
-                    }
-
-                    break;
-                case PIN_9: // servomotor 4
-                    servo4EndAngle = servoModel.getAngleDegrees();
-                    if (isMovingForward(servo4startAngle, servo4EndAngle)) {
-                        servo4MovingForward = true;
-                    } else if (isMovingBackward(servo4startAngle, servo4EndAngle)) {
-                        servo4MovingBackward = true;
-                    }
-
-                    break;
-            }
-        }
-    }
-
-
-    private boolean isMovingForward(int startAngle, int endAngle) {
-        boolean movingForward = false;
-        if (endAngle >= 0 && endAngle <= 180) {
-            if (startAngle < endAngle) {
-                movingForward = true;
-            }
-        }
-        return movingForward;
-    }
-
-    private boolean isMovingBackward(int startAngle, int endAngle) {
-        boolean movingBackward = false;
-        if (endAngle >= 0 && endAngle <= 180) {
-            if (startAngle > endAngle) {
-                movingBackward = true;
-            }
-        }
-        return movingBackward;
     }
 
 }
