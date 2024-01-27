@@ -348,16 +348,16 @@ public class RobotArmBusiness {
         coordinateModels.add(getCoordinateModel(-12, 9, 11));
 
         //H
-        coordinateModels.add(getCoordinateModel(-11.9, 7.5, 11));
-        coordinateModels.add(getCoordinateModel(-11.9, 7.5, 10));
-        coordinateModels.add(getCoordinateModel(-11.9, 10.4, 10));
-        coordinateModels.add(getCoordinateModel(-11.9, 10.4, 11));
+        coordinateModels.add(getCoordinateModel(-11.3, 7.5, 11));
+        coordinateModels.add(getCoordinateModel(-11.3, 7.5, 10));
+        coordinateModels.add(getCoordinateModel(-11.3, 10.4, 10));
+        coordinateModels.add(getCoordinateModel(-11.3, 10.4, 11));
         coordinateModels.add(getCoordinateModel(-10, 7.5, 11));
         coordinateModels.add(getCoordinateModel(-10, 7.5, 10));
         coordinateModels.add(getCoordinateModel(-10, 10.4, 10));
         coordinateModels.add(getCoordinateModel(-10, 10.4, 11));
-        coordinateModels.add(getCoordinateModel(-11.9, 9, 11));
-        coordinateModels.add(getCoordinateModel(-11.9, 9, 10));
+        coordinateModels.add(getCoordinateModel(-11.3, 9, 11));
+        coordinateModels.add(getCoordinateModel(-11.3, 9, 10));
         coordinateModels.add(getCoordinateModel(-10, 9, 10));
         coordinateModels.add(getCoordinateModel(-10, 9, 11));
 
