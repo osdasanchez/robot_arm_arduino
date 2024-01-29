@@ -68,7 +68,7 @@ public class ArmArduinoBusiness {
         for (char letter : letters) {
 
             List<AngleModel> angleModels =
-                    letterBusiness.calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY());
+                    letterBusiness.calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY(), 0);
             for(AngleModel angleModel : angleModels){
                 //this.arduinoControl.send((int)angleModel.getThetha1() + " " + (int)angleModel.getThetha3() + " " + (int)angleModel.getThetha2() + " 80");
                 this.arduinoControl.send(data);

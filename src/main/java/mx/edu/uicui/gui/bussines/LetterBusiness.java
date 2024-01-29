@@ -26,9 +26,9 @@ public class LetterBusiness {
         double yAbsolut = 17;
         double zAbsolut = 10;
 
-        Map<Integer,CoordinateModel> corrdinatesMap = new HashMap<>();
+        Map<Integer, CoordinateModel> corrdinatesMap = new HashMap<>();
         int key = 1;
-        for(int i = 1 ; i<= 5 ; i++){
+        for (int i = 1; i <= 5; i++) {
             double x = xAbsolut;
             for (int j = 1; j <= 8; j++) {
                 CoordinateModel coordinateModel = new CoordinateModel();
@@ -36,7 +36,7 @@ public class LetterBusiness {
                 coordinateModel.setX(x);
                 coordinateModel.setY(yAbsolut);
                 coordinateModel.setZ(zAbsolut);
-                corrdinatesMap.put(key,coordinateModel);
+                corrdinatesMap.put(key, coordinateModel);
                 key++;
                 x = x + 2.5;
 
@@ -49,1037 +49,397 @@ public class LetterBusiness {
         int i = 1;
         for (char letter : letters) {
             List<AngleModel> angleModels =
-                    calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY());
+                    calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY(), 0);
             i++;
         }
 
     }
 
-    public List<AngleModel> calculateAngles(char letter, double xAbsolut, double yAbsolut) {
+    public List<AngleModel> calculateAngles(char letter, double xAbsolut, double yAbsolut, double zAbsolut) {
         List<AngleModel> angleModels = new ArrayList<>();
-        List<CoordinateModel> coordinateModels = null;
-        CoordinateModel coordinate1 ;
-        CoordinateModel coordinate2 ;
-        CoordinateModel coordinate3;
-        CoordinateModel coordinate4 ;
-        CoordinateModel coordinate5 ;
-        CoordinateModel coordinate6 ;
-        CoordinateModel coordinate7 ;
-        CoordinateModel coordinate8;
-        CoordinateModel coordinate9;
+        List<CoordinateModel> coordinateModels = new ArrayList<>();
 
         switch (letter) {
             case 'A':
                 System.out.println("A");
-                coordinateModels = new ArrayList<>();
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(1.5, 0, 10));
+                coordinateModels.add(getCoordinateModel(1.5, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+                coordinateModels.add(getCoordinateModel(1.5, 0, 10));
+                coordinateModels.add(getCoordinateModel(1.5, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(.5, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(2.5, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(2.5, -1.5, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(2);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(2);
-                coordinate4.setY(-2);
-                coordinate4.setZ(10);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0.5);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1.5);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-              coordinate7 = new CoordinateModel();
-                coordinate7.setX(1.5);
-                coordinate7.setY(-1);
-                coordinate7.setZ(10);
-
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
-
-
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut, zAbsolut);
                 break;
+
             case 'B':
                 System.out.println("B");
-                coordinateModels = new ArrayList<>();
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
 
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-1);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1);
-                coordinate7.setY(0);
-                coordinate7.setZ(8);
-
-                coordinate8 = new CoordinateModel();
-                coordinate8.setX(0);
-                coordinate8.setY(0);
-                coordinate8.setZ(8);
-
-                coordinate9 = new CoordinateModel();
-                coordinate9.setX(0);
-                coordinate9.setY(0);
-                coordinate9.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-                coordinateModels.add(coordinate8);
-                coordinateModels.add(coordinate9);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut, zAbsolut);
                 break;
+
             case 'C':
                 System.out.println("C");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1.5);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1.5);
-                coordinate5.setY(0);
-                coordinate5.setZ(10);
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut,  zAbsolut);
                 break;
+
             case 'D':
                 System.out.println("D");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1.5);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1.5);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-1);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-2);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-2);
-                coordinate6.setZ(10);
-
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut, zAbsolut);
                 break;
+
             case 'E':
                 System.out.println("E");
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
 
-                coordinateModels = new ArrayList<>();
-
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1.5);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(0);
-                coordinate4.setY(0);
-                coordinate4.setZ(10);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(0);
-                coordinate7.setY(-1);
-                coordinate7.setZ(10);
-
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut, zAbsolut);
                 break;
+
             case 'F':
                 System.out.println("F");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(0);
-                coordinate4.setZ(10);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(0);
-                coordinate7.setY(-1);
-                coordinate7.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
-
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'G':
                 System.out.println("G");
-                coordinateModels = new ArrayList<>();
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1.5);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-2);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1.5);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(0);
-                coordinate7.setY(-1);
-                coordinate7.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
 
 
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'H':
                 System.out.println("H");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
 
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(0);
-                coordinate3.setZ(10);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(2);
-                coordinate4.setY(-2);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(2);
-                coordinate5.setY(0);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(2);
-                coordinate6.setY(0);
-                coordinate6.setZ(10);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(2);
-                coordinate7.setY(-1);
-                coordinate7.setZ(8);
-
-                coordinate8 = new CoordinateModel();
-                coordinate8.setX(0);
-                coordinate8.setY(-1);
-                coordinate8.setZ(8);
-
-                coordinate9 = new CoordinateModel();
-                coordinate9.setX(0);
-                coordinate9.setY(-1);
-                coordinate9.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-                coordinateModels.add(coordinate8);
-                coordinateModels.add(coordinate9);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'I':
                 System.out.println("I");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(1.5, 0, 10));
+                coordinateModels.add(getCoordinateModel(1.5, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(0);
-                coordinate3.setZ(10);
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'J':
                 System.out.println("J");
-                coordinateModels = new ArrayList<>();
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -2, 8));
+                coordinateModels.add(getCoordinateModel(0, -2, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1);
-                coordinate4.setY(0);
-                coordinate4.setZ(10);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0.5);
-                coordinate5.setY(0);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1.5);
-                coordinate6.setY(0);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1.5);
-                coordinate7.setY(0);
-                coordinate7.setZ(10);
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
+
             case 'K':
                 System.out.println("K");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(0);
-                coordinate3.setY(0);
-                coordinate3.setZ(10);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-2);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1.5);
-                coordinate6.setY(0);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1.5);
-                coordinate7.setY(0);
-                coordinate7.setZ(10);
-
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'L':
                 System.out.println("L");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-2);
-                coordinate4.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'M':
                 System.out.println("M");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
 
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(-1);
-                coordinate3.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -1.5, 10));
 
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(2);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -1.5, 10));
 
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(2);
-                coordinate5.setY(-2);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(2);
-                coordinate6.setY(-2);
-                coordinate6.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'N':
                 System.out.println("N");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1);
-                coordinate5.setY(0);
-                coordinate5.setZ(10);
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'O':
                 System.out.println("O");
-                coordinateModels = new ArrayList<>();
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
 
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
 
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-2);
-                coordinate4.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
 
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-2);
-                coordinate5.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-2);
-                coordinate6.setZ(10);
 
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'P':
                 System.out.println("P");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(-1);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(0);
-                coordinate6.setY(-1);
-                coordinate6.setZ(10);
-
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'Q':
                 System.out.println("Q");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1.5);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1.5);
-                coordinate2.setY(-1);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(-0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(0);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1.5);
-                coordinate6.setY(-1);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1.5);
-                coordinate7.setY(-1);
-                coordinate7.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'R':
                 System.out.println("R");
 
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
 
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1);
-                coordinate4.setY(-1);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(-1);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1);
-                coordinate6.setY(-2);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1);
-                coordinate7.setY(-2);
-                coordinate7.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'S':
                 System.out.println("S");
 
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1.5);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(-1);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(0);
-                coordinate4.setY(-1);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(0);
-                coordinate5.setY(0);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(1.5);
-                coordinate6.setY(0);
-                coordinate6.setZ(8);
-
-                coordinate7 = new CoordinateModel();
-                coordinate7.setX(1.5);
-                coordinate7.setY(0);
-                coordinate7.setZ(10);
-
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-                coordinateModels.add(coordinate7);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'T':
                 System.out.println("T");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(1.5, 0, 10));
+                coordinateModels.add(getCoordinateModel(1.5, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(1);
-                coordinate1.setY(-2);
-                coordinate1.setZ(8);
+                coordinateModels.add(getCoordinateModel(0, -1.5, 10));
+                coordinateModels.add(getCoordinateModel(0, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(3, -1.5, 10));
 
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1);
-                coordinate2.setY(0);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1);
-                coordinate3.setY(0);
-                coordinate3.setZ(10);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(0);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(2);
-                coordinate5.setY(0);
-                coordinate5.setZ(8);
-
-                coordinate6 = new CoordinateModel();
-                coordinate6.setX(2);
-                coordinate6.setY(0);
-                coordinate6.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-                coordinateModels.add(coordinate6);
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'U':
                 System.out.println("U");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(0);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(1.5);
-                coordinate3.setY(-2);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(1.5);
-                coordinate4.setY(0);
-                coordinate4.setZ(8);
-
-                coordinate5 = new CoordinateModel();
-                coordinate5.setX(1.5);
-                coordinate5.setY(0);
-                coordinate5.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-                coordinateModels.add(coordinate5);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'V':
                 System.out.println("V");
-                coordinateModels = new ArrayList<>();
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -3, 10));
 
-                coordinate1 = new CoordinateModel();
-                coordinate1.setX(0);
-                coordinate1.setY(0);
-                coordinate1.setZ(8);
-
-                coordinate2 = new CoordinateModel();
-                coordinate2.setX(1);
-                coordinate2.setY(-2);
-                coordinate2.setZ(8);
-
-                coordinate3 = new CoordinateModel();
-                coordinate3.setX(2);
-                coordinate3.setY(0);
-                coordinate3.setZ(8);
-
-                coordinate4 = new CoordinateModel();
-                coordinate4.setX(2);
-                coordinate4.setY(0);
-                coordinate4.setZ(10);
-
-                coordinateModels.add(coordinate1);
-                coordinateModels.add(coordinate2);
-                coordinateModels.add(coordinate3);
-                coordinateModels.add(coordinate4);
-
-
-                angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'W':
                 System.out.println("W");
                 break;
             case 'X':
                 System.out.println("X");
+                coordinateModels.add(getCoordinateModel(3, 0, 10));
+                coordinateModels.add(getCoordinateModel(3, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 8));
+                coordinateModels.add(getCoordinateModel(0, -3, 10));
+
+
+                coordinateModels.add(getCoordinateModel(3, -3, 10));
+                coordinateModels.add(getCoordinateModel(3, -3, 8));
+                coordinateModels.add(getCoordinateModel(1.5, -1.5, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 8));
+                coordinateModels.add(getCoordinateModel(0, 0, 10));
+
+                //angleModels = processCoordinates(coordinateModels, xAbsolut, yAbsolut);
                 break;
+
             case 'Y':
                 System.out.println("Y");
                 break;
@@ -1091,12 +451,12 @@ public class LetterBusiness {
                 break;
         }
 
-        return angleModels;
+        return processCoordinates(coordinateModels, xAbsolut, yAbsolut, zAbsolut);
 
     }
 
     private List<AngleModel> processCoordinates(List<CoordinateModel> coordinateModels,
-                                                double xAbsolut, double yAbsolut){
+                                                double xAbsolut, double yAbsolut, double zAbsolut) {
 
         List<AngleModel> angleModels = new ArrayList<>();
 
@@ -1109,15 +469,31 @@ public class LetterBusiness {
             double z = coordinateModel.getZ();
 
             AngleModel angleModel = calculateInverseKinematics2(xReal, yReal);
-            if(z == 8){
-                angleModel.setThetha3(90);
-            } else if (z == 10){
-                angleModel.setThetha3(90);
+            if (z == 8) {
+                if (zAbsolut == 9) {
+                    angleModel.setThetha3(98);
+                } else {
+                    angleModel.setThetha3(85);
+                }
+            } else if (z == 10) {
+                if (zAbsolut == 9) {
+                    angleModel.setThetha3(110);
+                } else {
+                    angleModel.setThetha3(100);
+                }
             }
             System.out.println("theta3: " + angleModel.getThetha3());
             angleModels.add(angleModel);
         }
         return angleModels;
+    }
+
+    private CoordinateModel getCoordinateModel(double x, double y, double z) {
+        CoordinateModel coordinateModel = new CoordinateModel();
+        coordinateModel.setX(x);
+        coordinateModel.setY(y);
+        coordinateModel.setZ(z);
+        return coordinateModel;
     }
 
 
@@ -1131,8 +507,7 @@ public class LetterBusiness {
         double theta2 = Math.acos((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2));
 
 
-
-        angleModel.setThetha1( (theta1 * 180 / Math.PI) +180);
+        angleModel.setThetha1((theta1 * 180 / Math.PI) + 180);
         angleModel.setThetha2(theta2 * 180 / Math.PI);
 
         System.out.println("theta1: " + angleModel.getThetha1());
@@ -1144,21 +519,21 @@ public class LetterBusiness {
 
     public AngleModel calculateInverseKinematics2(double x, double y) {
 
-        double L1 = 20;
-        double L2 = 16;
+        double L1 = 19;
+        double L2 = 15;
 
         AngleModel angleModel = new AngleModel();
 
-       double theta2 = Math.acos((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2));
+        double theta2 = Math.acos((Math.pow(x, 2) + Math.pow(y, 2) - Math.pow(L1, 2) - Math.pow(L2, 2)) / (2 * L1 * L2));
 
-       double theta1 = Math.atan2(y,x) - Math.atan2((L2 * Math.sin(theta2)) , (L1 + L2 * Math.cos(theta2)));
+        double theta1 = Math.atan2(y, x) - Math.atan2((L2 * Math.sin(theta2)), (L1 + L2 * Math.cos(theta2)));
 
 
-        angleModel.setThetha1((theta1  * 180 / Math.PI ));
-        angleModel.setThetha2((theta2 * 180 / Math.PI ));
+        angleModel.setThetha1(Math.round(theta1 * 180 / Math.PI));
+        angleModel.setThetha2(Math.round(theta2 * 180 / Math.PI));
 
-        System.out.println("theta1: " + angleModel.getThetha1());
-        System.out.println("theta2: " + angleModel.getThetha2());
+        //System.out.println("theta1: " + angleModel.getThetha1());
+        //System.out.println("theta2: " + angleModel.getThetha2());
 
         return angleModel;
     }

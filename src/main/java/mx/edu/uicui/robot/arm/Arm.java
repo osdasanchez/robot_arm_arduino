@@ -117,13 +117,13 @@ public class Arm extends JArduino {
     }
 
     public void sendAnalogData(int Angle1, int Angle2, int Angle3) {
-        System.out.println("Angle 1: " + Angle1);
-        System.out.println("Angle 2: " + Angle2);
-        System.out.println("Angle 3: " + Angle3);
+        System.out.println("Angle 1 eje x: " + Angle1);
+        System.out.println("Angle 2 eje y: " + Angle2);
+        System.out.println("Angle 3 eje z: " + Angle3);
 
-        this.servo1EndAngle = Angle1;
-        this.servo2EndAngle = Angle3;
-        this.servo3EndAngle = Angle2;
+        this.servo1EndAngle = Angle1;  // eje x
+        this.servo2EndAngle = Angle3;  // eje z
+        this.servo3EndAngle = Angle2;  // eje y
         this.servo4EndAngle = 85;
        // isWritingEnable = true;
 

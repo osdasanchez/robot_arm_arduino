@@ -65,8 +65,8 @@ public class RobotArmController {
     private void sendData() {
         armModel.setWord(armRobotView.getWord());
         System.out.println(armModel.getWord());
-        //this.robotArmBusiness.sendData(armModel.getWord());  // escritura dinamica
-        this.robotArmBusiness.sendData();// escritura estatica
+        this.robotArmBusiness.sendData(armModel.getWord());  // escritura dinamica
+        //this.robotArmBusiness.sendData();// escritura estatica
 
     }
 

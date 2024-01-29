@@ -40,8 +40,8 @@ public class RobotArmBusiness {
         char[] letters = word.toUpperCase().toCharArray();
 
         double xAbsolut = -26;
-        double yAbsolut = 21;
-        double zAbsolut = 10;
+        double yAbsolut = 20;
+        double zAbsolut = 8;
 
         Map<Integer, CoordinateModel> corrdinatesMap = new HashMap<>();
         int key = 1;
@@ -53,12 +53,15 @@ public class RobotArmBusiness {
                 coordinateModel.setX(x);
                 coordinateModel.setY(yAbsolut);
                 coordinateModel.setZ(zAbsolut);
+                if(j >= 5 && j<=8){
+                    coordinateModel.setZ(9);
+                }
                 corrdinatesMap.put(key, coordinateModel);
                 key++;
-                x = x + 2.5;
+                x = x + 4;
 
             }
-            yAbsolut = yAbsolut - 2.5;
+            yAbsolut = yAbsolut - 4;
 
         }
 
@@ -67,7 +70,7 @@ public class RobotArmBusiness {
         for (char letter : letters) {
 
             List<AngleModel> angleModels =
-                    letterBusiness.calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY());
+                    letterBusiness.calculateAngles(letter, corrdinatesMap.get(i).getX(), corrdinatesMap.get(i).getY(), corrdinatesMap.get(i).getZ());
             for (AngleModel angleModel : angleModels) {
                 //this.arduinoControl.send((int)angleModel.getThetha1() + " " + (int)angleModel.getThetha3() + " " + (int)angleModel.getThetha2() + " 80");
                 this.arm.sendAnalogData((int) angleModel.getThetha1(), (int) angleModel.getThetha2(), (int) angleModel.getThetha3());
@@ -103,13 +106,19 @@ public class RobotArmBusiness {
         //R
         coordinateModels.add(getCoordinateModel(-25.5, 18, 11));
         coordinateModels.add(getCoordinateModel(-25.5, 18, 10));
-        coordinateModels.add(getCoordinateModel(-25.5, 21, 10));
-        coordinateModels.add(getCoordinateModel(-22.5, 21, 10));
         coordinateModels.add(getCoordinateModel(-25.5, 19.5, 10));
+        coordinateModels.add(getCoordinateModel(-25.5, 21, 10));
+        coordinateModels.add(getCoordinateModel(-25, 21, 10));
+        coordinateModels.add(getCoordinateModel(-24, 21, 10));
+        coordinateModels.add(getCoordinateModel(-23, 21, 10));
+        coordinateModels.add(getCoordinateModel(-22.5, 21, 10));
+        coordinateModels.add(getCoordinateModel(-23.5, 20, 10));
+        coordinateModels.add(getCoordinateModel(-25.5, 19.5, 10));
+        coordinateModels.add(getCoordinateModel(-24, 18.5, 10));
         coordinateModels.add(getCoordinateModel(-22.5, 18, 10));
         coordinateModels.add(getCoordinateModel(-22.5, 18, 11));
 
-        //O
+        /*//O
         coordinateModels.add(getCoordinateModel(-19, 18, 11));
         coordinateModels.add(getCoordinateModel(-19, 18, 10));
         coordinateModels.add(getCoordinateModel(-22, 18, 10));
@@ -420,6 +429,8 @@ public class RobotArmBusiness {
         coordinateModels.add(getCoordinateModel(-17.5, 3.8, 10));
         coordinateModels.add(getCoordinateModel(-17.5, 7, 10));
         coordinateModels.add(getCoordinateModel(-17.5, 7, 11));
+        */
+
 
 
 
